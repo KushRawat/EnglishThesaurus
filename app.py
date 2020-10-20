@@ -13,6 +13,9 @@ def translate(word):
     elif word.title() in data:
         return data[word.title()]
 
+    elif word.upper() in data:
+        return data[word.upper()]
+
     elif len(get_close_matches(word, data.keys(), cutoff = 0.8)) > 0:
         
         yn = input(f"Did you mean {get_close_matches(word, data.keys(), n = 2, cutoff = 0.8)[0]} instead? Enter Y if yes, or N if no: ")
