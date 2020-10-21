@@ -20,9 +20,9 @@ def translate(word):
         
         yn = input(f"Did you mean {get_close_matches(word, data.keys(), n = 2, cutoff = 0.8)[0]} instead? Enter Y if yes, or N if no: ")
         
-        if yn == "Y":
+        if yn == "Y" or yn == "y":
             return data[get_close_matches(word, data.keys(), n = 2, cutoff = 0.8)[0]]
-        elif yn == "N":
+        elif yn == "N" or yn == "n":
             return "Word does not exist. Please double check it."
         else:
             return "We didn't understand your entry."
