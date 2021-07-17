@@ -5,19 +5,19 @@ data = json.load(open("data.json"))
 
 def translate(word):
 
-    word = word.lower()
+    word = word.lower() #dealing with case-sensitive words
     
     if word in data:
         return data[word]
     
-    elif word.title() in data:
+    elif word.title() in data: #case:if word is a proper noun
         return data[word.title()]
 
-    elif word.upper() in data:
+    elif word.upper() in data: #case:if word is an acronym
         return data[word.upper()]
 
-    elif len(get_close_matches(word, data.keys(), cutoff = 0.8)) > 0:
-        
+    elif len(get_close_matches(word, data.keys(), cutoff = 0.8)) > 0: #case:similar words --> user enters bookk/boook instead of book
+        # help(get_close_matches) --> get_close_matches(word, possibilities, n=3, cut0ff=0.6)
         yn = input(f"Did you mean {get_close_matches(word, data.keys(), n = 2, cutoff = 0.8)[0]} instead? Enter Y if yes, or N if no: ")
         
         if yn == "Y" or yn == "y":
